@@ -1,2 +1,5 @@
+## 1.2
+BFA 8.0 toc bump.
+
 ## 1.1
 Moved toggle to TRP Toolbar.
