@@ -1,3 +1,6 @@
+## 1.4
+Fixes for the fixes for TRP3 1.5.0 (I should test more).
+
 ## 1.3
 Fixes for TRP3 1.5.0.
 
