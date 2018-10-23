@@ -1,6 +1,10 @@
 ------------------------------------------------------
--- TRP3 Location Toggle by Lorrissa-ArgentDawn (EU)
+-- TRP3 Location Toggle by iMintty_ (Curse)
 ------------------------------------------------------
+
+-- Reference to 'register_map_location' so we can update it onClick
+local register_map_location_checkbox = nil;
+
 
 local function onStart()
     local color = TRP3_API.utils.str.color
@@ -17,8 +21,22 @@ local function onStart()
     local tooltip_loc_shown = "Location: "..color("g").."Visible"
     local tooltip_loc_hidden = "Location: "..color("r").."Hidden"
 
-    registerConfigHandler({'register_map_location'}, function()
+    
+    TRP3_API.Events.registerCallback(TRP3_API.Events.WORKFLOW_ON_FINISH, function()
+        -- As of TRP 1.5.0 'register_map_location' isn't always loaded until after we're initialized
+        registerConfigHandler({'register_map_location'}, function()
+            location_setting_updated = true
+        end)
         location_setting_updated = true
+
+        -- Get register_map_location checkbox controller to be able to update it onClick
+        -- (There's probably a better way to do this but for now this works)
+        for i, v in ipairs(TRP3_API.register.CONFIG_STRUCTURE.elements) do
+            if v.configKey == "register_map_location" then
+                register_map_location_checkbox = v.controller
+                break
+            end
+        end
     end)
 
     TRP3_API.toolbar.toolbarAddButton{
@@ -52,10 +70,12 @@ local function onStart()
                 setConfigValue('register_map_location', false)
                 buttonStructure.toolbar = tooltip_loc_hidden
                 buttonStructure.icon = "Spell_Shadow_AuraOfDarkness"
+                register_map_location_checkbox:SetChecked(false)
             else
                 setConfigValue('register_map_location', true)
                 buttonStructure.toolbar = tooltip_loc_shown
                 buttonStructure.icon = "INV_DARKMOON_EYE"
+                register_map_location_checkbox:SetChecked(true)
             end
         end,
     }
@@ -65,7 +85,7 @@ end
 TRP3_API.module.registerModule({
     ["name"] = "Location Toggle",
     ["description"] = "Adds a toolbar button to quickly enable/disable map location.",
-    ["version"] = 1.2,
+    ["version"] = 1.3,
     ["id"] = "trp_location_toggle",
     ["onStart"] = onStart,
     ["minVersion"] = 3,    
