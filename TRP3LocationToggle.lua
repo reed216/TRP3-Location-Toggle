@@ -64,7 +64,7 @@ local function onStart()
                 buttonStructure.toolbar = tooltip_loc_shown
                 buttonStructure.icon = "INV_DARKMOON_EYE"
             end
-            TRP3_API.configuration.refreshPage("main_config_register")
+            TRP3_API.configuration.refreshPage(TRP3_API.register.CONFIG_STRUCTURE.id)
         end,
     }
 end
