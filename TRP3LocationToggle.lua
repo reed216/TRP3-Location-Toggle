@@ -3,15 +3,6 @@
 ------------------------------------------------------
 
 ------------------------------------------------------
--- Updates 'Enable character location' checkbox in settings
-local function updateSettingsCheckbox(bool)
-    for i, v in ipairs(TRP3_API.register.CONFIG_STRUCTURE.elements) do
-        if v.configKey == "register_map_location" then
-            v.controller:SetChecked(bool)
-            break
-        end
-    end
-end
 
 local function onStart()
     local color = TRP3_API.utils.str.color
@@ -68,13 +59,12 @@ local function onStart()
                 setConfigValue('register_map_location', false)
                 buttonStructure.toolbar = tooltip_loc_hidden
                 buttonStructure.icon = "Spell_Shadow_AuraOfDarkness"
-                updateSettingsCheckbox(false)
             else
                 setConfigValue('register_map_location', true)
                 buttonStructure.toolbar = tooltip_loc_shown
                 buttonStructure.icon = "INV_DARKMOON_EYE"
-                updateSettingsCheckbox(true)
             end
+            TRP3_API.configuration.refreshPage(TRP3_API.register.CONFIG_STRUCTURE.id)
         end,
     }
 end
