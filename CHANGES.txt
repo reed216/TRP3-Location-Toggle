@@ -1,3 +1,6 @@
+## 1.5
+Future proof by using configuration.refreshPage for checkboxes (Thanks Ellypse)
+
 ## 1.4
 Fixes for the fixes for TRP3 1.5.0 (I should test more).
 
