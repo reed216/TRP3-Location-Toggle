@@ -1,4 +1,4 @@
-## Interface: 80000
+## Interface: 80100
 ## Title: TRP3 Location Toggle
 ## Version: @project-version@
 ## Notes: Adds a toolbar button to quickly enable/disable map location for TotalRP 3.
