@@ -6,7 +6,12 @@
 
 local function onStart()
     local color = TRP3_API.utils.str.color
+    local visibleIcon = "inv_darkmoon_eye"
+    local hiddenIcon = "spell_shadow_auraofdarkness"
 
+    if TRP3_API.globals.is_classic then
+        visibleIcon = "spell_shadow_shadowworddominate"
+    end
     if not TRP3_API.toolbar then
         TRP3_API.utils.message.displayMessage(color("r").."The 'Toolbar' module must be enabled for Location Toggle to work!")
         return
@@ -30,7 +35,7 @@ local function onStart()
 
     TRP3_API.toolbar.toolbarAddButton{
         id = "trp3_location_toggle",
-        icon = "INV_DARKMOON_EYE",
+        icon = visibleIcon,
         configText = "Location Toggle",
         tooltip = "Location Toggle",
         tooltipSub = "Click to toggle location on/off",
@@ -46,10 +51,10 @@ local function onStart()
             if location_setting_updated then
                 if getConfigValue('register_map_location') then
                     buttonStructure.tooltip = tooltip_loc_shown
-                    buttonStructure.icon = "INV_DARKMOON_EYE"
+                    buttonStructure.icon = visibleIcon
                 else
                     buttonStructure.tooltip = tooltip_loc_hidden
-                    buttonStructure.icon = "Spell_Shadow_AuraOfDarkness"
+                    buttonStructure.icon = hiddenIcon
                 end
                 location_setting_updated = false
             end
@@ -58,11 +63,11 @@ local function onStart()
             if getConfigValue('register_map_location') then
                 setConfigValue('register_map_location', false)
                 buttonStructure.toolbar = tooltip_loc_hidden
-                buttonStructure.icon = "Spell_Shadow_AuraOfDarkness"
+                buttonStructure.icon = hiddenIcon
             else
                 setConfigValue('register_map_location', true)
                 buttonStructure.toolbar = tooltip_loc_shown
-                buttonStructure.icon = "INV_DARKMOON_EYE"
+                buttonStructure.icon = visibleIcon
             end
             TRP3_API.configuration.refreshPage(TRP3_API.register.CONFIG_STRUCTURE.id)
         end,
@@ -73,7 +78,7 @@ end
 TRP3_API.module.registerModule({
     ["name"] = "Location Toggle",
     ["description"] = "Adds a toolbar button to quickly enable/disable map location.",
-    ["version"] = 1.6,
+    ["version"] = 1.7,
     ["id"] = "trp_location_toggle",
     ["onStart"] = onStart,
     ["minVersion"] = 3,    
