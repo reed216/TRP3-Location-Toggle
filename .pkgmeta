@@ -1,0 +1,10 @@
+package-as: TRP3LocationToggle
+enable-nolib-creation: no
+
+ignore:
+    - README.md
+    - LICENSE
+
+manual-changelog:
+    filename: CHANGES.md
+    markup-type: markdown
