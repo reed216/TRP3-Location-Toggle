@@ -1,0 +1,15 @@
+# Travis CI configuration file
+# http://travis-ci.org
+
+sudo: false
+language: minimal
+
+deploy:
+  script: bash ./.script/release.sh
+  on:
+    tags: true
+
+notifications:
+ email:
+  on_success: never
+  on_failure: always
