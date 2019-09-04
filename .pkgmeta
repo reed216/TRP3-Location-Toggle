@@ -4,6 +4,7 @@ enable-nolib-creation: no
 ignore:
     - README.md
     - LICENSE
+    - .script
 
 manual-changelog:
     filename: CHANGES.md
