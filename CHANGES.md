@@ -1,3 +1,6 @@
+# Changes for version 1.8
+- Updated TOC to 8.2.5
+
 # Changes for version 1.7
 
 ## Classic supprt
