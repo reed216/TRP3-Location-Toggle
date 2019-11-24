@@ -5,10 +5,12 @@ sudo: false
 language: minimal
 
 deploy:
-  provider: script
-  script: bash ./.script/release.sh
-  on:
-    tags: true
+  - provider: script
+    script: bash ./.script/deploy_release.sh
+    on:
+      tags: true
+  - provider: script
+    script: bash ./.script/deploy_development.sh
 
 notifications:
  email:
