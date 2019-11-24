@@ -8,7 +8,7 @@ for file in "/home/travis/build/iMintty/TRP3-Location-Toggle/.release"/*
 do
     if [ ${file: -4} == ".zip" ]
     then
-        curlfiles="$curlfiles -F '$(basename $file)=@$file'"
+        curlfiles="$curlfiles -F $(basename $file)=@$file"
     fi
 done
 
