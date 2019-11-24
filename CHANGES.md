@@ -1,10 +1,8 @@
-# Changes for version 1.8
-- Updated TOC to 8.2.5
+# Changes for version 1.9
 
-# Changes for version 1.7
+## Localization support
+- AddOn has been translated into Deutsch
+- (Feel free to help translate into your own language at CurseForge)
 
-## Classic supprt
-- Classic support has has been added. Please note that there's a different icon on the classic toolbar than on retail due to missing icons.
-
-## Changed
-- Updated toc to 8.2 on retail (better late than never!)
+## Fixed
+- Prevent the addon from loading before the toolbar is ready causing it to think the toolbar is disabled
