@@ -4,6 +4,9 @@
 
 ------------------------------------------------------
 
+-- imports
+local getConfigValue, registerConfigHandler, setConfigValue, loc = TRP3_API.configuration.getValue, TRP3_API.configuration.registerHandler, TRP3_API.configuration.setValue, TRP3_API.loc
+
 local function onStart()
     local color = TRP3_API.utils.str.color
     local visibleIcon = "inv_darkmoon_eye"
@@ -17,12 +20,9 @@ local function onStart()
         return
     end
 
-    -- imports
-    local getConfigValue, registerConfigHandler, setConfigValue = TRP3_API.configuration.getValue, TRP3_API.configuration.registerHandler, TRP3_API.configuration.setValue
-
     local location_setting_updated = true
-    local tooltip_loc_shown = "Location: "..color("g").."Visible"
-    local tooltip_loc_hidden = "Location: "..color("r").."Hidden"
+    local tooltip_loc_shown = format(loc.ADDON_LOCTOGGLE_tooltip_visible, color("g"))
+    local tooltip_loc_hidden = format(loc.ADDON_LOCTOGGLE_tooltip_hidden, color("r"))
 
     
     TRP3_API.Events.registerCallback(TRP3_API.Events.WORKFLOW_ON_FINISH, function()
@@ -38,7 +38,7 @@ local function onStart()
         icon = visibleIcon,
         configText = "Location Toggle",
         tooltip = "Location Toggle",
-        tooltipSub = "Click to toggle location on/off",
+        tooltipSub = loc.ADDON_LOCTOGGLE_tooltip_subtitle,
         onUpdate = function(Uibutton, buttonStructure)
             TRP3_API.toolbar.updateToolbarButton(Uibutton, buttonStructure)
             if GetMouseFocus() == Uibutton then
@@ -78,7 +78,7 @@ end
 TRP3_API.module.registerModule({
     ["name"] = "Location Toggle",
     ["description"] = "Adds a toolbar button to quickly enable/disable map location.",
-    ["version"] = 1.7,
+    ["version"] = 1.9,
     ["id"] = "trp_location_toggle",
     ["onStart"] = onStart,
     ["minVersion"] = 3,    

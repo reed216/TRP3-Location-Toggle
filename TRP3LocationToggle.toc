@@ -10,4 +10,5 @@
 ## Author: iMintty_ (Curse)
 ## Dependencies: TotalRP3
 
+Localization.lua
 TRP3LocationToggle.lua
