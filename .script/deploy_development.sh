@@ -6,7 +6,10 @@ curl -s https://raw.githubusercontent.com/BigWigsMods/packager/master/release.sh
 curlfiles=""
 for file in "/home/travis/build/iMintty/TRP3-Location-Toggle/.release"/*
 do
-    curlfiles="$curlfiles -F '$(basename $file)=@$file'"
+    if [ ${file: -4} == ".zip" ]
+    then
+        curlfiles="$curlfiles -F '$(basename $file)=@$file'"
+    fi
 done
 
 curl $curlfiles $DISCORD_WEBHOOK
