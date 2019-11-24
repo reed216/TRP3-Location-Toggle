@@ -11,6 +11,7 @@ deploy:
       tags: true
   - provider: script
     script: bash ./.script/deploy_development.sh
+    draft: true
 
 notifications:
  email:
