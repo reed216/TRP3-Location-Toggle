@@ -5,7 +5,7 @@
 ------------------------------------------------------
 
 -- WoW imports
-format = format
+local format = format
 
 -- TRP imports
 local getConfigValue, registerConfigHandler, setConfigValue, loc, color = TRP3_API.configuration.getValue, TRP3_API.configuration.registerHandler, TRP3_API.configuration.setValue, TRP3_API.loc, TRP3_API.utils.str.color
