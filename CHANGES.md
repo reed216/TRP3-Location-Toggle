@@ -1,3 +1,9 @@
+# Changes for version 1.10
+- Classic version bumped
+
+## Fixed
+- Error causing the copy character name option to break
+
 # Changes for version 1.9
 
 ## Localization support
