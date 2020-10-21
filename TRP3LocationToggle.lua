@@ -84,7 +84,7 @@ end
 TRP3_API.module.registerModule({
     ["name"] = "Location Toggle",
     ["description"] = "Adds a toolbar button to quickly enable/disable map location.",
-    ["version"] = 1.10,
+    ["version"] = 1.11,
     ["id"] = "trp_location_toggle",
     ["onStart"] = onStart,
     ["minVersion"] = 3,    
