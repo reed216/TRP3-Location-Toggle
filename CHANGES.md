@@ -1,3 +1,6 @@
+# Changes for version 1.12
+- Retail toc bumped
+
 # Changes for version 1.11
 - Classic and Retail toc bumped
 
