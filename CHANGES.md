@@ -1,3 +1,9 @@
+# Changes for version 1.13
+- Retail toc bumped
+
+## Fixed
+- TRP3 Event API compatibility restored
+
 # Changes for version 1.12
 - Retail toc bumped
 

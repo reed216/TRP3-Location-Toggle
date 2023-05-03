@@ -22,7 +22,7 @@ local function onStart()
     local tooltip_loc_shown = format(loc.ADDON_LOCTOGGLE_tooltip_visible, color("g"))
     local tooltip_loc_hidden = format(loc.ADDON_LOCTOGGLE_tooltip_hidden, color("r"))
 
-    TRP3_API.Events.registerCallback(TRP3_API.Events.WORKFLOW_ON_LOADED, function()
+    TRP3_API.RegisterCallback(TRP3_Addon, TRP3_Addon.Events.WORKFLOW_ON_LOADED, function()
         if not TRP3_API.toolbar then
             TRP3_API.utils.message.displayMessage(color("r").."The 'Toolbar' module must be enabled for Location Toggle to work!")
             return
@@ -70,7 +70,7 @@ local function onStart()
 
     end)
 
-    TRP3_API.Events.registerCallback(TRP3_API.Events.WORKFLOW_ON_FINISH, function()
+    TRP3_API.RegisterCallback(TRP3_Addon, TRP3_Addon.Events.WORKFLOW_ON_FINISH, function()
         -- As of TRP 1.5.0 'register_map_location' isn't always loaded until after we're initialized
         registerConfigHandler({'register_map_location'}, function()
             location_setting_updated = true
@@ -84,8 +84,8 @@ end
 TRP3_API.module.registerModule({
     ["name"] = "Location Toggle",
     ["description"] = "Adds a toolbar button to quickly enable/disable map location.",
-    ["version"] = 1.12,
+    ["version"] = 1.13,
     ["id"] = "trp_location_toggle",
     ["onStart"] = onStart,
-    ["minVersion"] = 3,    
+    ["minVersion"] = 3,
 })
