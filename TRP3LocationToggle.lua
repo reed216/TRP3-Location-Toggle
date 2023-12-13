@@ -13,7 +13,7 @@ local getConfigValue, registerConfigHandler, setConfigValue, loc, color = TRP3_A
 local function onStart()
     local visibleIcon = "inv_darkmoon_eye"
     local hiddenIcon = "spell_shadow_auraofdarkness"
-    if TRP3_API.globals.is_classic then
+    if WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
         visibleIcon = "spell_shadow_shadowworddominate"
     end
 
