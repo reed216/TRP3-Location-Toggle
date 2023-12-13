@@ -1,10 +1,10 @@
 package-as: TRP3LocationToggle
 enable-nolib-creation: no
+enable-toc-creation: yes
 
 ignore:
     - README.md
     - LICENSE
-    - .script
 
 manual-changelog:
     filename: CHANGES.md
