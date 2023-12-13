@@ -1,8 +1,9 @@
 # Changes for version 1.13
-- Retail toc bumped
+- TOC bumped for Classic, Wrath & Retail
 
 ## Fixed
-- TRP3 Event API compatibility restored
+- TRP3 Event API compatibility restored (whisperity)
+- Icon missing on classic clients
 
 # Changes for version 1.12
 - Retail toc bumped
