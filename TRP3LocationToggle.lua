@@ -36,7 +36,7 @@ local function onStart()
             tooltipSub = loc.ADDON_LOCTOGGLE_tooltip_subtitle,
             onUpdate = function(Uibutton, buttonStructure)
                 TRP3_API.toolbar.updateToolbarButton(Uibutton, buttonStructure)
-                if GetMouseFocus() == Uibutton then
+                if Uibutton:IsMouseMotionFocus() then
                     TRP3_API.ui.tooltip.refresh(Uibutton)
                 end
             end,
