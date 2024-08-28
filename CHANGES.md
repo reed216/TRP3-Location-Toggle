@@ -1,3 +1,10 @@
+# Changes for version 1.14
+- TOC bumped for Classic, Cata & Retail
+- Addon now on wago.io
+
+## Fixed
+- Fixed lua error on retail
+
 # Changes for version 1.13
 - TOC bumped for Classic, Wrath & Retail
 
