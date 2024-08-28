@@ -18,7 +18,12 @@ local function onStart()
     end
     
     -- fix for #7 for retail
-    getMouseFoci = GetMouseFoci ~= nil and GetMouseFoci or GetMouseFocus
+    local mouseMotionFocusSupport = false  
+    if GetMouseFoci ~= nil then
+        mouseMotionFocusSupport = true
+    end
+    
+    getMouseFoci = GetMouseFoci ~= nil and Uibutton:IsMouseMotionFocus or GetMouseFocus
 
     local location_setting_updated = true
 
@@ -39,8 +44,15 @@ local function onStart()
             tooltipSub = loc.ADDON_LOCTOGGLE_tooltip_subtitle,
             onUpdate = function(Uibutton, buttonStructure)
                 TRP3_API.toolbar.updateToolbarButton(Uibutton, buttonStructure)
-                if getMouseFoci() == Uibutton then
-                    TRP3_API.ui.tooltip.refresh(Uibutton)
+                -- fix for #7 for retail 
+                if mouseMotionFocusSupport then
+                    if Uibutton:IsMouseMotionFocus() then
+                        TRP3_API.ui.tooltip.refresh(Uibutton)
+                    end
+                else
+                    if GetMouseFocus() == Uibutton then
+                        TRP3_API.ui.tooltip.refresh(Uibutton)
+                    end
                 end
             end,
             onModelUpdate = function(buttonStructure)
