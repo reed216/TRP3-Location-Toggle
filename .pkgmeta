@@ -5,6 +5,7 @@ enable-toc-creation: yes
 ignore:
     - README.md
     - LICENSE
+    - static
 
 manual-changelog:
     filename: CHANGES.md

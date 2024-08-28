@@ -1,5 +1,5 @@
 ------------------------------------------------------
--- TRP3 Location Toggle by iMintty_ (Curse)
+-- TRP3 Location Toggle by reed216 (github)
 ------------------------------------------------------
 
 ------------------------------------------------------
@@ -16,6 +16,14 @@ local function onStart()
     if WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
         visibleIcon = "spell_shadow_shadowworddominate"
     end
+    
+    -- fix for #7 for retail
+    local mouseMotionFocusSupport = false  
+    if GetMouseFoci ~= nil then
+        mouseMotionFocusSupport = true
+    end
+    
+    getMouseFoci = GetMouseFoci ~= nil and Uibutton:IsMouseMotionFocus or GetMouseFocus
 
     local location_setting_updated = true
 
@@ -36,8 +44,15 @@ local function onStart()
             tooltipSub = loc.ADDON_LOCTOGGLE_tooltip_subtitle,
             onUpdate = function(Uibutton, buttonStructure)
                 TRP3_API.toolbar.updateToolbarButton(Uibutton, buttonStructure)
-                if Uibutton:IsMouseMotionFocus() then
-                    TRP3_API.ui.tooltip.refresh(Uibutton)
+                -- fix for #7 for retail 
+                if mouseMotionFocusSupport then
+                    if Uibutton:IsMouseMotionFocus() then
+                        TRP3_API.ui.tooltip.refresh(Uibutton)
+                    end
+                else
+                    if GetMouseFocus() == Uibutton then
+                        TRP3_API.ui.tooltip.refresh(Uibutton)
+                    end
                 end
             end,
             onModelUpdate = function(buttonStructure)
